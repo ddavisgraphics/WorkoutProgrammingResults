@@ -39,4 +39,11 @@ class OneRepMaxTest < ActiveSupport::TestCase
     assert_in_delta 117.4, results['lombardi_formula'], 0.5
     assert_in_delta 113.7, results['lander_formula'], 0.5
   end
+
+  test 'calculates average of all formulas correctly' do
+    one_rep_max = OneRepMax.new(weight: 100, reps: 5)
+    average = one_rep_max.average_of_all_formulas
+
+    assert_in_delta 115.4, average, 0.5
+  end
 end

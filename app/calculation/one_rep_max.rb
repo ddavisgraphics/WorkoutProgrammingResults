@@ -13,19 +13,20 @@ class OneRepMax
   def calculate
     return if @weight <= 0 || @reps <= 0
 
-    max = @weight * (1 + (@reps / 30.0))
+    max = average_of_all_formulas
     weight_to_nearest_5_pound(max)
   end
 
   # @return [Hash] results of all formulas
   def results_of_all_formulas
     results_of_all_formulas ||= {}
-    %w[brzycki_formula eply_formula lombardi_formula lander_formula mayhew_formula].each do |formula|
+    %w[brzycki_formula epley_formula lombardi_formula lander_formula mayhew_formula].each do |formula|
       results_of_all_formulas[formula] = send(formula)
     end
     results_of_all_formulas
   end
 
+  # @return [Float] average of all formulas
   def average_of_all_formulas
     @average_of_all_formulas ||= results_of_all_formulas.values.sum / results_of_all_formulas.size
   end
@@ -42,7 +43,7 @@ class OneRepMax
   # Epley formula for estimating one-rep max
   # Commonly used for moderate to high rep ranges
   # @return [Float] estimated one-rep max
-  def eply_formula
+  def epley_formula
     weight * (1 + (reps / 30.0))
   end
 
