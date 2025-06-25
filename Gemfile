@@ -51,6 +51,12 @@ group :development, :test do
 
   gem 'rubocop', require: false
   gem 'rubocop-rails', require: false
+
+  gem 'benchmark', require: false
+  gem 'benchmark-ips', require: false
+
+  gem 'pry', require: true
+  gem 'solargraph', require: false
 end
 
 group :development do
