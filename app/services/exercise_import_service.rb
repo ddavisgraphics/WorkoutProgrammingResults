@@ -31,14 +31,15 @@ class ExerciseImportService
   def import_exercises
     git_sync_repository || raise('Failed to sync or clone the git repository.')
     import_or_update_exercises(fetch_exercises_data)
-    stats
   end
 
   def summary
     <<~SUMMARY
-      #{@stats[:created]} exercises created, #{@stats[:updated]} updated, #{@stats[:unchanged]} unchanged.
-      Images: #{@stats[:images_downloaded]} downloaded, #{@stats[:images_skipped]} already existed,
-      #{@stats[:errors]} errors.
+      Import Summary:
+      - Created: #{stats[:created]}
+      - Updated: #{stats[:updated]}
+      - Unchanged: #{stats[:unchanged]}
+      - Errors: #{stats[:errors]}
     SUMMARY
   end
 
@@ -118,7 +119,16 @@ class ExerciseImportService
         puts "Error attaching image #{image}: #{e.message}"
       end
 
+      if exercise.new_record?
+        stats[:created] += 1
+      elsif exercise.changed?
+        stats[:updated] += 1
+      else
+        stats[:unchanged] += 1
+      end
+
       exercise.save!
+
       print '.' if (@stats[:created] + @stats[:updated] + @stats[:unchanged]) % 10 == 0
     end
   end
