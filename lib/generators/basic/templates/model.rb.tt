@@ -1,0 +1,11 @@
+<% module_namespacing do -%>
+  class <%= class_name %> < <%= parent_class_name.classify %>
+    <% attributes.each do |attribute| -%>
+      <% if attribute.reference? -%>
+        belongs_to :<%= attribute.name %><%= attribute.inject_options %>
+      <% elsif attribute.has_many? -%>
+        has_many :<%= attribute.name.pluralize %><%= attribute.inject_options %>
+      <% end -%>
+    <% end -%>
+  end
+<% end -%>

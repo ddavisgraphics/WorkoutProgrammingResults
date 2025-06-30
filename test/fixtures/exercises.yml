@@ -1,0 +1,155 @@
+bench_press:
+  name: "Barbell Bench Press - Medium Grip"
+  force: "push"
+  level: "beginner"
+  mechanic: "compound"
+  equipment: "barbell"
+  primary_muscles: ["chest"]
+  secondary_muscles: ["triceps"]
+  instructions: ["When you are done, place the bar back in the rack."]
+  category: "strength"
+  image_urls: []
+
+chest_flyes:
+  name: "Dumbbell Flyes"
+  force: "push"
+  level: "beginner"
+  mechanic: "isolation"
+  equipment: "dumbbell"
+  primary_muscles: ["chest"]
+  secondary_muscles: []
+  instructions: ["Hold for a second at the contracted position and repeat the movement for the prescribed amount of repetitions."]
+  category: "strength"
+  image_urls: []
+
+squat:
+  name: "Barbell Full Squat"
+  force: "push"
+  level: "intermediate"
+  mechanic: "compound"
+  equipment: "barbell"
+  primary_muscles: ["quadriceps"]
+  secondary_muscles: ["lower back"]
+  instructions: ["Repeat for the recommended amount of repetitions."]
+  category: "strength"
+  image_urls: []
+
+leg_press:
+  name: "Leg Press"
+  force: "push"
+  level: "beginner"
+  mechanic: "compound"
+  equipment: "machine"
+  primary_muscles: ["quadriceps"]
+  secondary_muscles: ["hamstrings"]
+  instructions: ["After a brief pause, return to the starting position."]
+  category: "strength"
+  image_urls: []
+
+shoulder_press:
+  name: "Dumbbell Shoulder Press"
+  force: "push"
+  level: "beginner"
+  mechanic: "compound"
+  equipment: "dumbbell"
+  primary_muscles: ["shoulders"]
+  secondary_muscles: ["triceps"]
+  instructions: ["Lower the dumbbells to shoulder level and repeat for the recommended amount of repetitions."]
+  category: "strength"
+  image_urls: []
+
+deadlift:
+  name: "Barbell Deadlift"
+  force: "pull"
+  level: "intermediate"
+  mechanic: "compound"
+  equipment: "barbell"
+  primary_muscles: ["lower back"]
+  secondary_muscles: ["hamstrings", "quadriceps"]
+  instructions: ["Begin in a standing position. Bend at the hips to grip the weighted barbell. Keep your chest up and back straight. Stand to full height while maintaining a straight back. Return to starting position and repeat."]
+  category: "strength"
+  image_urls: []
+
+row:
+  name: "Bent Over Barbell Row"
+  force: "pull"
+  level: "intermediate"
+  mechanic: "compound"
+  equipment: "barbell"
+  primary_muscles: ["middle back"]
+  secondary_muscles: ["biceps", "lats"]
+  instructions: ["Bend over at the waist keeping your back straight. Pull the bar to your lower chest. Lower and repeat."]
+  category: "strength"
+  image_urls: []
+
+lateral_raise:
+  name: "Side Lateral Raise"
+  force: "push"
+  level: "beginner"
+  mechanic: "isolation"
+  equipment: "dumbbell"
+  primary_muscles: ["shoulders"]
+  secondary_muscles: []
+  instructions: ["Repeat for the recommended amount of repetitions."]
+  category: "strength"
+  image_urls: []
+
+bicep_curl:
+  name: "Dumbbell Bicep Curl"
+  force: "pull"
+  level: "beginner"
+  mechanic: "isolation"
+  equipment: "dumbbell"
+  primary_muscles: ["biceps"]
+  secondary_muscles: ["forearms"]
+  instructions: ["Repeat for the recommended amount of repetitions."]
+  category: "strength"
+  image_urls: []
+
+hammer_curl:
+  name: "Hammer Curls"
+  force: "pull"
+  level: "beginner"
+  mechanic: "isolation"
+  equipment: "dumbbell"
+  primary_muscles: ["biceps"]
+  secondary_muscles: []
+  instructions: ["Repeat for the recommended amount of repetitions."]
+  category: "strength"
+  image_urls: []
+
+tricep_pushdown:
+  name: "Triceps Pushdown"
+  force: "push"
+  level: "beginner"
+  mechanic: "isolation"
+  equipment: "cable"
+  primary_muscles: ["triceps"]
+  secondary_muscles: []
+  instructions: ["Repeat for the recommended amount of repetitions."]
+  category: "strength"
+  image_urls: []
+
+tricep_extension:
+  name: "Dumbbell One-Arm Triceps Extension"
+  force: "push"
+  level: "intermediate"
+  mechanic: "isolation"
+  equipment: "dumbbell"
+  primary_muscles: ["triceps"]
+  secondary_muscles: []
+  instructions: ["Repeat for the recommended amount of repetitions and switch arms."]
+  category: "strength"
+  image_urls: []
+
+crunches:
+  name: "Crunches"
+  force: "pull"
+  level: "beginner"
+  mechanic: "isolation"
+  equipment: "body only"
+  primary_muscles: ["abdominals"]
+  secondary_muscles: []
+  instructions: ["Repeat for the recommended amount of repetitions."]
+  category: "strength"
+  image_urls: []

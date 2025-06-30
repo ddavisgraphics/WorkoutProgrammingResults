@@ -1,0 +1,59 @@
+strength_program:
+  name: "5x5 Strength Training"
+  weeks: 12
+  active: true
+  level: 1
+  visibility: 1
+  estimated_time_per_workout: "60 minutes"
+  user: gym_rat
+  description: "A classic strength training program focusing on compound lifts."
+
+beginner_program:
+  name: "Beginner Strength"
+  weeks: 4
+  active: true
+  level: 0  # beginner
+  visibility: 0  # private
+  estimated_time_per_workout: "30-45 minutes"
+  user: gym_rat
+
+premium_program:
+  name: "Elite Performance"
+  weeks: 16
+  active: true
+  level: 2  # advanced
+  visibility: 2  # premium
+  estimated_time_per_workout: "75-90 minutes"
+  user: gym_rat
+
+active_program:
+  name: "Current Program"
+  weeks: 8
+  active: true
+  level: 1
+  visibility: 0
+  user: gym_rat
+
+inactive_program:
+  name: "Old Program"
+  weeks: 8
+  active: false
+  level: 1
+  visibility: 0
+  user: gym_rat
+
+public_program:
+  name: "Shared Program"
+  weeks: 6
+  active: true
+  level: 1
+  visibility: 1  # public
+  user: gym_rat
+
+program_with_workouts:
+  name: "Workout Collection"
+  weeks: 4
+  active: true
+  level: 1
+  visibility: 1
+  user: gym_rat

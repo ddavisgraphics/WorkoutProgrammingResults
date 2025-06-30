@@ -1,0 +1,20 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# Workouts for the 5x5 Strength Training Program
+workout_a:
+  name: "Workout A - Squat Focus"
+  day_of_week: 1  # Monday
+  position: 1
+  program: strength_program
+
+workout_b:
+  name: "Workout B - Bench Focus"
+  day_of_week: 3  # Wednesday
+  position: 2
+  program: strength_program
+
+workout_c:
+  name: "Workout C - Deadlift Focus"
+  day_of_week: 5  # Friday
+  position: 3
+  program: strength_program

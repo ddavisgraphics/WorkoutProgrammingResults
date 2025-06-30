@@ -1,0 +1,76 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# Workout A - Squat Focus exercises
+squat_a:
+  workout: workout_a
+  exercise: squat
+  position: 1
+  sets: 5
+  reps: 5
+  weight: 225.0
+
+bench_a:
+  workout: workout_a
+  exercise: bench_press
+  position: 2
+  sets: 5
+  reps: 5
+  weight: 185.0
+
+row_a:
+  workout: workout_a
+  exercise: row
+  position: 3
+  sets: 5
+  reps: 5
+  weight: 135.0
+
+# Workout B - Bench Focus exercises
+bench_b:
+  workout: workout_b
+  exercise: bench_press
+  position: 1
+  sets: 5
+  reps: 5
+  weight: 195.0
+
+shoulder_press_b:
+  workout: workout_b
+  exercise: shoulder_press
+  position: 2
+  sets: 5
+  reps: 5
+  weight: 95.0
+
+leg_press_b:
+  workout: workout_b
+  exercise: leg_press
+  position: 3
+  sets: 5
+  reps: 5
+  weight: 300.0
+
+# Workout C - Deadlift Focus exercises
+deadlift_c:
+  workout: workout_c
+  exercise: deadlift
+  position: 1
+  sets: 5
+  reps: 5
+  weight: 275.0
+
+squat_c:
+  workout: workout_c
+  exercise: squat
+  position: 2
+  sets: 5
+  reps: 5
+  weight: 235.0
+
+chest_flyes_c:
+  workout: workout_c
+  exercise: chest_flyes
+  position: 3
+  sets: 5
+  reps: 5
+  weight: 40.0

@@ -1,0 +1,9 @@
+Description:
+    Creates a new model class and test file without generating a database migration.
+
+Example:
+    rails generate model_without_migration User name:string email:string
+
+    This will create:
+        app/models/user.rb
+        test/models/user_test.rb
