@@ -1,12 +1,5 @@
 # frozen_string_literal: true
 
-# Schema Information
-# Table name: workouts
-# t.string "name"
-# t.integer "day_of_week"
-# t.integer "position"
-# t.datetime "created_at", null: false
-# t.datetime "updated_at", null: false
 class Workout < ApplicationRecord
   belongs_to :program
   has_many :workout_exercises, dependent: :destroy

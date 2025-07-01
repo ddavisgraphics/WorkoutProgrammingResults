@@ -1,0 +1,114 @@
+<h1 class="mdc-typography--headline3">Admin Dashboard</h1>
+
+<div class="admin-stats">
+  <div class="mdc-card stat-card">
+    <div class="mdc-card__content">
+      <h3 class="mdc-typography--headline4"><%= User.count %></h3>
+      <p class="mdc-typography--subtitle1">Total Users</p>
+    </div>
+  </div>
+  <div class="mdc-card stat-card">
+    <div class="mdc-card__content">
+      <h3 class="mdc-typography--headline4"><%= User.where(role: 'admin').count %></h3>
+      <p class="mdc-typography--subtitle1">Admins</p>
+    </div>
+  </div>
+  <div class="mdc-card stat-card">
+    <div class="mdc-card__content">
+      <h3 class="mdc-typography--headline4"><%= User.where(role: 'trainer').count %></h3>
+      <p class="mdc-typography--subtitle1">Trainers</p>
+    </div>
+  </div>
+  <div class="mdc-card stat-card">
+    <div class="mdc-card__content">
+      <h3 class="mdc-typography--headline4"><%= User.where(role: 'gym_rat').count %></h3>
+      <p class="mdc-typography--subtitle1">Gym Rats</p>
+    </div>
+  </div>
+</div>
+
+<section class="admin-section">
+  <h2 class="mdc-typography--headline5">User Management</h2>
+
+  <div class="filter-controls">
+    <div class="search-box mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon">
+      <i class="material-icons mdc-text-field__icon">search</i>
+      <input type="text" id="userSearchInput" class="mdc-text-field__input" placeholder="Search users...">
+      <div class="mdc-notched-outline">
+        <div class="mdc-notched-outline__leading"></div>
+        <div class="mdc-notched-outline__trailing"></div>
+      </div>
+    </div>
+    <div class="role-filter">
+      <div class="mdc-select mdc-select--outlined">
+        <div class="mdc-select__anchor" aria-labelledby="role-filter-label">
+          <span class="mdc-notched-outline">
+            <span class="mdc-notched-outline__leading"></span>
+            <span class="mdc-notched-outline__notch">
+              <span id="role-filter-label" class="mdc-floating-label">Filter by role</span>
+            </span>
+            <span class="mdc-notched-outline__trailing"></span>
+          </span>
+          <span class="mdc-select__selected-text"></span>
+          <span class="mdc-select__dropdown-icon">
+            <svg class="mdc-select__dropdown-icon-graphic" viewBox="7 10 10 5">
+              <polygon class="mdc-select__dropdown-icon-inactive" stroke="none" fill-rule="evenodd" points="7 10 12 15 17 10"></polygon>
+              <polygon class="mdc-select__dropdown-icon-active" stroke="none" fill-rule="evenodd" points="7 15 12 10 17 15"></polygon>
+            </svg>
+          </span>
+        </div>
+        <div class="mdc-select__menu mdc-menu mdc-menu-surface mdc-menu-surface--fullwidth">
+          <ul class="mdc-list" id="roleFilter">
+            <li class="mdc-list-item" data-value="" aria-selected="true">
+              <span class="mdc-list-item__text">All Roles</span>
+            </li>
+            <li class="mdc-list-item" data-value="admin">
+              <span class="mdc-list-item__text">Admin</span>
+            </li>
+            <li class="mdc-list-item" data-value="trainer">
+              <span class="mdc-list-item__text">Trainer</span>
+            </li>
+            <li class="mdc-list-item" data-value="gym_rat">
+              <span class="mdc-list-item__text">Gym Rat</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mdc-data-table">
+    <div class="mdc-data-table__table-container">
+      <table class="mdc-data-table__table" id="usersTable">
+        <thead>
+          <tr class="mdc-data-table__header-row">
+            <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Email</th>
+            <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Role</th>
+            <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Created At</th>
+            <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody class="mdc-data-table__content">
+          <% User.where.not(id: current_user.id).order(:email).each do |user| %>
+            <tr class="mdc-data-table__row" data-role="<%= user.role %>">
+              <td class="mdc-data-table__cell"><%= user.email %></td>
+              <td class="mdc-data-table__cell">
+                <span class="role-badge role-<%= user.role %>"><%= user.role.titleize %></span>
+              </td>
+              <td class="mdc-data-table__cell"><%= user.created_at.strftime("%Y-%m-%d") %></td>
+              <td class="mdc-data-table__cell">
+                <%= button_to "Impersonate", impersonate_path(user),
+                      method: :post,
+                      class: "mdc-button mdc-button--raised",
+                      data: { turbo_method: :post } do %>
+                  <span class="mdc-button__ripple"></span>
+                  <span class="mdc-button__label">Impersonate</span>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

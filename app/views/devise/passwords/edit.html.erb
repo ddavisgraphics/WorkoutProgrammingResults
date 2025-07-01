@@ -1,0 +1,55 @@
+<div class="mdc-login-container">
+  <div class="mdc-login-card mdc-card">
+    <div class="mdc-login-header">
+      <h2 class="mdc-typography--headline4">
+        Change your password
+      </h2>
+      <p class="mdc-typography--body2">
+        Enter your new password below
+      </p>
+    </div>
+
+    <div class="mdc-login-form">
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+        <%= f.hidden_field :reset_password_token %>
+
+        <div class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-trailing-icon w-full mb-4">
+          <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class: "mdc-text-field__input", required: true %>
+          <span class="mdc-notched-outline">
+            <span class="mdc-notched-outline__leading"></span>
+            <span class="mdc-notched-outline__notch">
+              <span class="mdc-floating-label">New password <% if @minimum_password_length %><small>(<%= @minimum_password_length %> characters min)</small><% end %></span>
+            </span>
+            <span class="mdc-notched-outline__trailing"></span>
+          </span>
+          <i class="material-icons mdc-text-field__icon mdc-text-field__icon--trailing">lock</i>
+        </div>
+
+        <div class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-trailing-icon w-full mb-4">
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "mdc-text-field__input", required: true %>
+          <span class="mdc-notched-outline">
+            <span class="mdc-notched-outline__leading"></span>
+            <span class="mdc-notched-outline__notch">
+              <span class="mdc-floating-label">Confirm new password</span>
+            </span>
+            <span class="mdc-notched-outline__trailing"></span>
+          </span>
+          <i class="material-icons mdc-text-field__icon mdc-text-field__icon--trailing">lock_outline</i>
+        </div>
+
+        <button type="submit" class="mdc-button mdc-button--raised w-full mb-4">
+          <span class="mdc-button__ripple"></span>
+          <i class="material-icons mdc-button__icon" aria-hidden="true">save</i>
+          <span class="mdc-button__label">Change my password</span>
+        </button>
+      <% end %>
+
+      <div class="mdc-login-footer">
+        <div class="text-center">
+          <%= link_to "Back to log in", new_session_path(resource_name), class: "mdc-typography--body2 mdc-theme--primary" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

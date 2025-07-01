@@ -37,6 +37,7 @@ class UserTest < ActiveSupport::TestCase
 
   test 'should validate presence of role' do
     user = User.new(email: 'test@example.com', password: 'password')
+    user.role = nil
     assert_not user.valid?
     assert_includes user.errors[:role], "can't be blank"
   end
@@ -45,5 +46,29 @@ class UserTest < ActiveSupport::TestCase
     user = User.new(email: 'test@example.com', password: 'password', role: 'invalid_role')
     assert_not user.valid?
     assert_includes user.errors[:role], 'is not included in the list'
+  end
+
+  test 'display_name returns username part of the email' do
+    user = User.new(email: 'john.doe@example.com')
+    assert_equal 'John Doe', user.display_name
+  end
+
+  test 'role_name returns titleized version of role' do
+    assert_equal 'Admin', @admin.role_name
+    assert_equal 'Trainer', @trainer.role_name
+    assert_equal 'Gym Rat', @gym_rat.role_name
+  end
+
+  test 'except class method excludes the given user' do
+    users = User.except(@admin)
+    assert_not users.include?(@admin)
+    assert users.include?(@trainer)
+  end
+
+  test 'role_counts returns count of users by role' do
+    counts = User.role_counts
+    assert_equal User.where(role: 'admin').count, counts['admin']
+    assert_equal User.where(role: 'trainer').count, counts['trainer']
+    assert_equal User.where(role: 'gym_rat').count, counts['gym_rat']
   end
 end

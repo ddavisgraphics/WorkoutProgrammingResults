@@ -1,0 +1,33 @@
+<% if current_user_impersonated? %>
+  <div class="impersonation-banner">
+    <p>
+      <strong>Impersonation Mode:</strong> You are viewing the site as <%= current_user.email %>
+      <%= link_to "Return to Admin", stop_impersonating_path,
+                method: :delete,
+                class: "button button-danger",
+                data: { turbo_method: :delete } %>
+    </p>
+  </div>
+
+  <style>
+    .impersonation-banner {
+      background-color: #ff9800;
+      color: white;
+      padding: 10px 15px;
+      margin: 0;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .impersonation-banner .button-danger {
+      background-color: #f44336;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 4px;
+      text-decoration: none;
+      margin-left: 10px;
+    }
+  </style>
+<% end %>

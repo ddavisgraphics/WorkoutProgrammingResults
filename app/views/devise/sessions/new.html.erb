@@ -1,0 +1,91 @@
+<div class="mdc-login-container">
+  <div class="mdc-login-card mdc-card">
+    <div class="mdc-login-header">
+      <h2 class="mdc-typography--headline4">
+        Log in
+      </h2>
+      <p class="mdc-typography--body2">
+        Access your workout programming
+      </p>
+    </div>
+
+    <div class="mdc-login-form">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-trailing-icon w-full mb-4">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "mdc-text-field__input", required: true %>
+          <span class="mdc-notched-outline">
+            <span class="mdc-notched-outline__leading"></span>
+            <span class="mdc-notched-outline__notch">
+              <span class="mdc-floating-label">Email</span>
+            </span>
+            <span class="mdc-notched-outline__trailing"></span>
+          </span>
+          <i class="material-icons mdc-text-field__icon mdc-text-field__icon--trailing">email</i>
+        </div>
+
+        <div class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-trailing-icon w-full mb-4">
+          <%= f.password_field :password, autocomplete: "current-password", class: "mdc-text-field__input", required: true %>
+          <span class="mdc-notched-outline">
+            <span class="mdc-notched-outline__leading"></span>
+            <span class="mdc-notched-outline__notch">
+              <span class="mdc-floating-label">Password</span>
+            </span>
+            <span class="mdc-notched-outline__trailing"></span>
+          </span>
+          <i class="material-icons mdc-text-field__icon mdc-text-field__icon--trailing">lock</i>
+        </div>
+
+        <% if devise_mapping.rememberable? %>
+          <div class="mdc-form-field mb-4">
+            <div class="mdc-touch-target-wrapper">
+              <div class="mdc-checkbox mdc-checkbox--touch">
+                <%= f.check_box :remember_me, class: "mdc-checkbox__native-control" %>
+                <div class="mdc-checkbox__background">
+                  <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                    <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+                  </svg>
+                  <div class="mdc-checkbox__mixedmark"></div>
+                </div>
+                <div class="mdc-checkbox__ripple"></div>
+              </div>
+            </div>
+            <%= f.label :remember_me, class: "mdc-typography--body2" %>
+          </div>
+        <% end %>
+
+        <button type="submit" class="mdc-button mdc-button--raised w-full mb-4">
+          <span class="mdc-button__ripple"></span>
+          <i class="material-icons mdc-button__icon" aria-hidden="true">login</i>
+          <span class="mdc-button__label">Log in</span>
+        </button>
+
+        <% if devise_mapping.recoverable? %>
+          <div class="text-center mb-4">
+            <%= link_to "Forgot your password?", new_password_path(resource_name), class: "mdc-typography--body2 mdc-theme--primary" %>
+          </div>
+        <% end %>
+      <% end %>
+
+      <div class="mdc-login-footer">
+        <% if devise_mapping.registerable? %>
+          <div class="text-center">
+            <span class="text-sm text-gray-600">Don't have an account?</span>
+            <%= link_to "Sign up", new_registration_path(resource_name), class: "ml-1 font-medium text-primary hover:text-primary-dark" %>
+          </div>
+        <% end %>
+
+        <% if devise_mapping.confirmable? && controller_name != 'confirmations' %>
+          <div class="text-center mt-2">
+            <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name), class: "text-sm font-medium text-primary hover:text-primary-dark" %>
+          </div>
+        <% end %>
+
+        <% if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
+          <div class="text-center mt-2">
+            <%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name), class: "text-sm font-medium text-primary hover:text-primary-dark" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

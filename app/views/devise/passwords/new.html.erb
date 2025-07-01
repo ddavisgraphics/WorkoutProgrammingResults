@@ -1,0 +1,46 @@
+<div class="mdc-login-container">
+  <div class="mdc-login-card mdc-card">
+    <div class="mdc-login-header">
+      <h2 class="mdc-typography--headline4">
+        Forgot your password?
+      </h2>
+      <p class="mdc-typography--body2">
+        Enter your email to receive reset instructions
+      </p>
+    </div>
+
+    <div class="mdc-login-form">
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+
+        <div class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-trailing-icon w-full mb-4">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "mdc-text-field__input", required: true %>
+          <span class="mdc-notched-outline">
+            <span class="mdc-notched-outline__leading"></span>
+            <span class="mdc-notched-outline__notch">
+              <span class="mdc-floating-label">Email</span>
+            </span>
+            <span class="mdc-notched-outline__trailing"></span>
+          </span>
+          <i class="material-icons mdc-text-field__icon mdc-text-field__icon--trailing">email</i>
+        </div>
+
+        <button type="submit" class="mdc-button mdc-button--raised w-full mb-4">
+          <span class="mdc-button__ripple"></span>
+          <i class="material-icons mdc-button__icon" aria-hidden="true">send</i>
+          <span class="mdc-button__label">Send reset instructions</span>
+        </button>
+      <% end %>
+
+      <div class="mdc-login-footer">
+        <div class="text-center">
+          <%= link_to "Log in", new_session_path(resource_name), class: "mdc-typography--body2 mdc-theme--primary" %>
+          <% if devise_mapping.registerable? %>
+            <span class="mdc-typography--body2 mx-2">|</span>
+            <%= link_to "Sign up", new_registration_path(resource_name), class: "mdc-typography--body2 mdc-theme--primary" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

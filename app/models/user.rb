@@ -31,4 +31,28 @@ class User < ApplicationRecord
   def set_default_role
     self.role ||= 'gym_rat'
   end
+
+  # Returns a display name for the user
+  # @return [String]
+  def display_name
+    email.split('@').first.titleize
+  end
+
+  # Returns a formatted version of the role
+  # @return [String]
+  def role_name
+    role.titleize
+  end
+
+  # Returns all users except the current one
+  # @return [ActiveRecord::Relation]
+  def self.except(user)
+    where.not(id: user)
+  end
+
+  # Returns a count of users by role
+  # @return [Hash]
+  def self.role_counts
+    group(:role).count
+  end
 end
